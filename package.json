@@ -11,9 +11,6 @@
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint src/**/*.ts --fix",
     "test": "npm run build && jasmine"
-
-
-
   },
   "repository": {
     "type": "git",
@@ -41,7 +38,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jasmine": "^4.0.2",
-    "jasmine-spec-reporter": "^7.0.0", 
+    "jasmine-spec-reporter": "^7.0.0",
     "nodemon": "^2.0.15",
     "prettier": "2.6.0",
     "supertest": "^6.2.2",
@@ -56,6 +53,8 @@
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-rate-limit": "^6.3.0",
+    "helmet": "^5.0.2",
     "morgan": "^1.10.0",
     "pg": "^8.7.3"
   }
