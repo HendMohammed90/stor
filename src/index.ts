@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit'
+import errorHandler from './middleware/error';
 
 
 // create an instance server
@@ -27,8 +28,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
-app.use(limiter)
-
+app.use(limiter);
 
 // Add routing for main Path
 app.get('/', async (req: Request, res: Response) => {
@@ -38,12 +38,21 @@ app.get('/', async (req: Request, res: Response) => {
 });
 
 
+
+// app.use(errorHandler);
+app.use((_req:Request , res:Response)=>{
+    res.status(400).json({
+        Message : "Some Thing bad Has Happened Pleas Back To The Documentation"
+    })
+})
+
 const PORT = process.env.PORT || 8080;
 
 // start express server
 const server = app.listen(PORT, () => {
     console.log(`Server is starting at prot:${PORT}`);
 });
+
 
 //Handle Unhandled Promise Rejections
 void process.on('unhandledRejection', (error) => {
